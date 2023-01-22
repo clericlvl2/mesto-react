@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import ImagePopup from "../ImagePopup/ImagePopup";
+import PopupWithImage from "../ImagePopup/PopupWithImage";
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
@@ -25,18 +25,21 @@ function App() {
   }
   return (
     <>
-      <Header></Header>
+      <Header/>
       <Main onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}
-      ></Main>
-      <ImagePopup card={selectedCard} onClose={closeAllPopups}></ImagePopup>
+      />
+
+      {/* Edit Avatar Popup */}
+
       <PopupWithForm name={'edit-avatar'}
                      title={'Обновить аватар'}
                      isOpen={isEditAvatarPopupOpen}
                      isSmall={true}
                      onClose={closeAllPopups}
+                     buttonText={'Сохранить'}
       >
         <div className="popup__form-field">
           <input className="popup__form-input popup__form-input_data_user-avatar"
@@ -48,15 +51,15 @@ function App() {
           />
           <span className="popup__form-error popup__form-error_data_user-avatar"></span>
         </div>
-        <button className="popup__btn-submit popup__btn-submit_data_user-avatar" type="submit">
-          Сохранить
-        </button>
       </PopupWithForm>
+
+      {/* Edit Profile Popup */}
 
       <PopupWithForm name={'edit-profile'}
                      title={'Редактировать профиль'}
                      isOpen={isEditProfilePopupOpen}
                      onClose={closeAllPopups}
+                     buttonText={'Сохранить'}
       >
         <div className="popup__form-field">
           <input className="popup__form-input popup__form-input_data_name"
@@ -82,14 +85,15 @@ function App() {
           />
           <span className="popup__form-error popup__form-error_data_profile-desc"></span>
         </div>
-        <button className="popup__btn-submit popup__btn-submit_data_profile" type="submit">
-          Сохранить
-        </button>
       </PopupWithForm>
+
+      {/* Add Place Popup */}
+
       <PopupWithForm name={'add-place'}
                      title={'Новое место'}
                      isOpen={isAddPlacePopupOpen}
                      onClose={closeAllPopups}
+                     buttonText={'Создать'}
       >
         <div className="popup__form-field">
           <input className="popup__form-input popup__form-input_data_card-title"
@@ -113,19 +117,20 @@ function App() {
           />
           <span className="popup__form-error popup__form-error_data_card-image"></span>
         </div>
-        <button className="popup__btn-submit popup__btn-submit_data_card" type="submit">
-          Создать
-        </button>
       </PopupWithForm>
+
+      {/* Confirm Action Popup */}
+
       <PopupWithForm name={'confirm-action'}
                      title={'Вы уверены?'}
                      isOpen={isConfirmActionPopupOpen}
                      isSmall={true}
                      onClose={closeAllPopups}
-      >
-        <button type="button" className="popup__btn-submit">Да</button>
-      </PopupWithForm>
-      <Footer></Footer>
+                     buttonText={'Да'}
+      />
+
+      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
+      <Footer/>
     </>
   );
 }
