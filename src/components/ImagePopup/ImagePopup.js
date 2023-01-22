@@ -1,6 +1,6 @@
 import React from "react";
 
-const PopupWithImage = ({ card, onClose }) => {
+const ImagePopup = ({ card, onClose }) => {
   const openedPopupStyle = (card._id) ? 'popup_opened' : '';
   return (
     <section className={`popup popup_type_zoom-image_zoom ${openedPopupStyle}`} aria-label="Фото. Увеличение">
@@ -13,4 +13,4 @@ const PopupWithImage = ({ card, onClose }) => {
   )
 }
 
-export default PopupWithImage;
+export default ImagePopup;

@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import PopupWithImage from "../ImagePopup/PopupWithImage";
+import ImagePopup from "../ImagePopup/ImagePopup";
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
@@ -129,7 +129,7 @@ function App() {
                      buttonText={'Да'}
       />
 
-      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
       <Footer/>
     </>
   );
