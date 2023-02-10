@@ -1,5 +1,6 @@
 .popup__btn-submit {
   width: 100%;
+  min-height: 48px;
   padding: 12px 0;
   background: #000;
   border-radius: 2px;
