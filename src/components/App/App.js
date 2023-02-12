@@ -28,10 +28,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    api.initializeAppData().then(([userData, cardsList]) => {
-      setCurrentUser(userData);
-      setCardsList(cardsList);
-    });
+    api
+      .initializeAppData()
+      .then(([userData, cardsList]) => {
+        setCurrentUser(userData);
+        setCardsList(cardsList);
+      })
+      .catch(console.error);
   }, []);
 
   const handleEditAvatarClick = () => setEditAvatarPopupState(true);
@@ -48,9 +51,13 @@ const App = () => {
       ? api.unsetCardLike(card._id)
       : api.setCardLike(card._id);
 
-    request.then(newCard => {
-      setCardsList(state => state.map(c => (c._id === card._id ? newCard : c)));
-    });
+    return request
+      .then(newCard => {
+        setCardsList(state =>
+          state.map(c => (c._id === card._id ? newCard : c))
+        );
+      })
+      .catch(console.error);
   };
   const handleCardDelete = card => {
     const cardId = card._id;
