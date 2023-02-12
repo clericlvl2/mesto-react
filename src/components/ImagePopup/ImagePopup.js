@@ -5,7 +5,7 @@ const ImagePopup = ({ card, onClose }) => {
 
   return (
     <section
-      className={`popup popup_type_zoom-image_zoom ${openedPopupStyle}`}
+      className={`popup popup_type_zoom-image ${openedPopupStyle}`}
       aria-label="Фото. Увеличение"
     >
       <div className="popup__image-container">

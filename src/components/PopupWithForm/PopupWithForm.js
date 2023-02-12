@@ -36,6 +36,7 @@ const PopupWithForm = ({
             className={`popup__btn-submit popup__btn-submit_type_${name}`}
             type="submit"
             onClick={onSubmit}
+            disabled={isLoading}
           >
             {isLoading ? (
               <div style={spinnerWrapper}>
